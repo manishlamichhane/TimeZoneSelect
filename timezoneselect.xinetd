@@ -1,0 +1,12 @@
+# default: on
+# description: The tool to obtain time from different timezone
+service timezoneselect
+{
+	flags		= REUSE
+	socket_type	= stream        
+	wait		= no
+	user		= nobody
+	server		= /usr/local/bin/timezoneselect.sh
+	disable		= no
+}
+
