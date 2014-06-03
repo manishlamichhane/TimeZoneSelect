@@ -5,7 +5,6 @@ HOST=localhost
 PORT=1234
 
 FILE1=/tmp/timezoneselect-$$
-FILE2=/tmp/timezoneselect-$$
 
 
 GETTEXT="gettext -d timezoneselect_ui.sh"
@@ -17,7 +16,7 @@ help () {
 }
 
 end () {
-	rm -f $FILE1 $FILE2 $ERROR
+	rm -f $FILE1
 	exit
 }
 
@@ -48,23 +47,13 @@ fi
 
 while true
 do
-	$DIALOG --inputbox "`$GETTEXT \"Enter Continent and City:\"`" 8 55 2> $FILE1 || end
+	$DIALOG --inputbox "`$GETTEXT \"Enter ( Continent / City ) :\"`" 8 35 2> $FILE1 || end
 	
 	
-	echo "FILE1 TIMEZONESELECT"
-	cat $FILE1 | $TIMEZONESELECT
+	export TZ=`cat $FILE1`
+	
+	MSG="`$GETTEXT \"Time :\"` `echo $TZ | $TIMEZONESELECT`\\n\\n`$GETTEXT \"Continue?\"`"
+	$DIALOG --yesno "$MSG" 7 20 || end
 	
 	
-	echo "FILE2"
-	cat $FILE2
-	
-	if cat $FILE1 | $TIMEZONESELECT > $FILE2 
-	then
-		#MSG="`$GETTEXT \"Time:\"` `cat $FILE2`\\n\\n`$GETTEXT \"Continue?\"`"
-		#$DIALOG --yesno "$MSG" 7 20 || end
-		cat $FILE2
-	else
-		MSG="`$GETTEXT \"Error:\"`\\n\\n`cat $ERROR`\\n\\n`$GETTEXT \"Continue?\"`"
-		$DIALOG --yesno "$MSG" 10 35 || end
-	fi
 done
