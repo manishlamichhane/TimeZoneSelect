@@ -8,8 +8,9 @@ FILE1=/tmp/timezoneselect-$$
 
 
 GETTEXT="gettext -d timezoneselect_ui.sh"
+export TEXTDOMAIN=timezoneselect_ui.sh
 
-which gdialog 2> /dev/null && DIALOG=gdialog || DIALOG=dialog
+DIALOG=gdialog
 
 help () {
         echo "Usage: $0 [ host [port] | --help ]"
@@ -47,7 +48,7 @@ fi
 
 while true
 do
-	$DIALOG --inputbox "`$GETTEXT \"Enter ( Continent / City ) :\"`" 8 35 2> $FILE1 || end
+	$DIALOG --inputbox "`$GETTEXT \"Enter ( Continent / City ) :\"`" 8 25 2> $FILE1 || end
 	
 	
 	export TZ=`cat $FILE1`
