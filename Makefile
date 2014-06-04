@@ -2,7 +2,7 @@ install: timezoneselect_ui.sh.mo
 	install timezoneselect.sh timezoneselect_ui.sh /usr/local/bin
 	grep -q "`cat timezoneselect.services`" /etc/services || cat timezoneselect.services >> /etc/services
 	install timezoneselect.xinetd /etc/xinetd.d/timezoneselect.sh
-	ln -s /usr/local/bin/timezoneselect_ui.sh /usr/local/bin/ntimezoneselect_ui.sh
+	ln -sf /usr/local/bin/timezoneselect_ui.sh /usr/local/bin/ntimezoneselect_ui.sh
 	install timezoneselect_ui.sh.mo /usr/share/locale/fr_FR/LC_MESSAGES/timezoneselect_ui.sh.mo
 	
 uninstall:
