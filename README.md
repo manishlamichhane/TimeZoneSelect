@@ -32,4 +32,4 @@ Use CLI
 Use GUI
 --------
       $ timezoneselect_ui.sh 
- Follow the instruction on the screen.
+ Follow the instruction on the screen. The continent and the city need to be input this way : Europe/Paris. If not, It will not work.

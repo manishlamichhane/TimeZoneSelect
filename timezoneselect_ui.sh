@@ -20,6 +20,8 @@ end () {
 	exit
 }
 
+
+# Test for argument help
 if [ $# -eq 1 ]
 then
         if [ $1 -eq '--help' ]
@@ -34,6 +36,7 @@ then
         PORT=$2
 fi
 
+# Use of netcat and test for link to timezoneselect_ui
 if [ $# -ge 1 -o `basename $0` = 'ntimezoneselect_ui' ]
 then
 	if [ $HOST -a $PORT ]
@@ -45,6 +48,7 @@ then
 	fi
 fi
 
+#Loop for asking the Continent/City and displaying the result
 while true
 do
 	$DIALOG --inputbox "`$GETTEXT \"Enter ( Continent / City ) :\"`" 8 25 2> $FILE1 || end
