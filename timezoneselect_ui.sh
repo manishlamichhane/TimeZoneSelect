@@ -8,7 +8,6 @@ FILE1=/tmp/timezoneselect-$$
 
 
 GETTEXT="gettext -d timezoneselect_ui.sh"
-export TEXTDOMAIN=timezoneselect_ui.sh
 
 DIALOG=gdialog
 

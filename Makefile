@@ -4,8 +4,15 @@ install: timezoneselect_ui.sh.mo
 	install timezoneselect.sh.xinetd /etc/xinetd.d/timezoneselect.sh
 	ln -s /usr/local/bin/timezoneselect_ui.sh /usr/local/bin/ntimezoneselect_ui.sh
 	install timezoneselect_ui.sh.mo /usr/share/locale/fr_FR/LC_MESSAGES/timezoneselect_ui.sh.mo
+	locale-gen
 	
 uninstall:
+	rm /usr/local/bin/timezoneselect_ui.sh
+	rm /usr/local/bin/timezoneselect.sh
+	rm /usr/local/bin/ntimezoneselect_ui.sh
+	rm /usr/share/locale/fr_FR/LC_MESSAGES/timezoneselect_ui.sh.mo
+	locale-gen
+	
 
 
 clone:
